@@ -5,6 +5,18 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('../schema/schema');
 const chalk = require('chalk');
 
+const mongoose = require('mongoose');
+const dbName = process.env.USER_DBNAME;
+const dbUser = process.env.USER_DBUSER;
+const password = process.env.USER_DBPASS;
+
+const db = `mongodb+srv://${dbUser}:${password}@cluster0.3ltupjm.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+
+mongoose.set('strictQuery', false)
+  .connect(db)
+  .then((res) => console.log(successMsg('Connected to DB')))
+  .catch((error) => console.log(errorMsg(error)));
+
 const app = express();
 
 const errorMsg = chalk.bgKeyword('white').redBright;

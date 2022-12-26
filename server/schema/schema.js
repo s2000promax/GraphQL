@@ -120,7 +120,7 @@ const Mutation = new GraphQLObjectType({
         id: { type: GraphQLID },
         name: { type: new GraphQLNonNull(GraphQLString) },
         genre: { type: new GraphQLNonNull(GraphQLString) },
-        directorId: { type: GraphQLInt },
+        directorId: { type: GraphQLID },
         rate: { type: GraphQLInt },
         watched: { type: new GraphQLNonNull(GraphQLBoolean) },
       },

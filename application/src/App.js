@@ -3,12 +3,23 @@ import Tabs from './components/Tabs/Tabs';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import theme from './components/theme';
 
+import  ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: 'http://localhost:3005/graphql',
+});
+
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <Tabs />
-      </MuiThemeProvider>
+      <ApolloProvider client={client}>
+        <MuiThemeProvider theme={theme}>
+          <Tabs/>
+        </MuiThemeProvider>
+      </ApolloProvider>
+
     );
   }
 }

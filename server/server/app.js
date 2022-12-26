@@ -1,6 +1,7 @@
 require('dotenv').config();
 const PORT = process.env.PORT || process.env.USER_PORT;
 const  express = require('express');
+const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('../schema/schema');
 const chalk = require('chalk');
@@ -21,6 +22,8 @@ const app = express();
 
 const errorMsg = chalk.bgKeyword('white').redBright;
 const successMsg = chalk.bgKeyword('green').white;
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,

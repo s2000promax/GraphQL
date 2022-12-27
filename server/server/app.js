@@ -25,6 +25,8 @@ const successMsg = chalk.bgKeyword('green').white;
 
 app.use(cors());
 
+app.use(express.static("public"));
+
 app.use('/graphql', graphqlHTTP({
   schema,
   graphiql: true

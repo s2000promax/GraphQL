@@ -8,7 +8,7 @@ import { ApolloProvider } from 'react-apollo';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: 'http://localhost:3005/graphql',
+  uri: 'https://graphql-test-2.herokuapp.com/graphql',
 });
 
 class App extends Component {
